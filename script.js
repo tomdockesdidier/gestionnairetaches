@@ -43,10 +43,14 @@ function ajouter() {
         name.id=(Nadd2 + "nom");
         let description=document.createElement("p");
         description.id=(Nadd2 + "description");
+        let deletebutton=document.createElement("button");
+        deletebutton.id=("Dbutton");
+        deletebutton.addEventListener("click", () => supprimer(Nadd2));
 
         name.textContent=Nadd;
         description.textContent=Dadd;
 
+        main.appendChild(deletebutton);
         main.appendChild(name);
         main.appendChild(description);
 
@@ -100,16 +104,21 @@ function modifier() {
     }
 }
 
-function supprimer() {
+function supprimer(element) {
     let Ndelete=document.getElementById("Ndelete").value.toLowerCase();
     if (Ltasks.includes(Ndelete)===true) {
         let pos=Ltasks.indexOf(Ndelete);
         Ltasks.splice(pos, 1);
         document.getElementById(Ndelete).remove();
         txt.textContent="Votre tâche a bien été supprimée.";
-        
+
         let Hide1=document.getElementById("Ndelete");
         Hide1.value="";
+    } else if (Ltasks.includes(element)===true) {
+        let pos=Ltasks.indexOf(element);
+        Ltasks.splice(pos, 1);
+        document.getElementById(element).remove();
+        txt.textContent="Votre tâche a bien été supprimée.";
     } else if (Ndelete==="") { 
         txt.textContent="Veuillez écrire un nom.";
     } else {
