@@ -59,11 +59,13 @@ function modifier() {
     let Nmodif=document.getElementById("Nmodif").value;
     let newname=document.getElementById("Newname").value;
     let newD=document.getElementById("NewD").value;
+    let pos=Ltasks.indexOf(Nmodif);
     if (Ltasks.includes(Nmodif)===true) {
         if (newname!=="") {
             document.getElementById(Nmodif + "nom").textContent=newname;
             document.getElementById(Nmodif).id=(newname);
-            Ltasks
+            Ltasks.splice(pos,1);
+            Ltasks.push(newname);
         }
         if (newD!=="") {
             document.getElementById(Nmodif + "description").textContent=newD;
