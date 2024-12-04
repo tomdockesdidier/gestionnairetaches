@@ -17,8 +17,14 @@ function display(element) {
         return (x, precedent)
     } else {
         precedent.style.display="none";
-        x=0;
-        return x
+        if (precedent!==element) {
+            element.style.display="flex";
+            precedent=element;
+            x=1;
+        } else {
+            x=0;
+        }
+        return (x, precedent)
     }
 }
 
@@ -55,14 +61,14 @@ function ajouter() {
         main.appendChild(description);
 
         Liste.appendChild(main);
-        txt.textContent=`Votre tâche "${Nadd}" a été créée.`
+        txt.textContent=`Votre tâche "${Nadd}" a été créée.`;
 
         let Hide1=document.getElementById("Nadd");
         let Hide2=document.getElementById("Dadd");
         Hide1.value="";
         Hide2.value="";
     } else {
-        txt.textContent=`Veuillez écrire un nom.`
+        txt.textContent=`Veuillez écrire un nom.`;
     }
 }
 
@@ -80,16 +86,16 @@ function modifier() {
             document.getElementById(Nmodif2).id=(newname2);
             Ltasks.splice(pos,1);
             Ltasks.push(newname2);
-            document.getElementById(Nmodif2 + "nom").id=(newname2 + "nom")
+            document.getElementById(Nmodif2 + "nom").id=(newname2 + "nom");
         }
         if (newD!=="") {
             document.getElementById(Nmodif2 + "description").textContent=newD;
-            document.getElementById(Nmodif2 + "description").id=(newname2 + "description")
+            document.getElementById(Nmodif2 + "description").id=(newname2 + "description");
         }
         if (newname==="") {
-            txt.textContent=`Votre tâche "${Nmodif}" a bien été modifiée.`
+            txt.textContent=`Votre tâche "${Nmodif}" a bien été modifiée.`;
         } else {
-            txt.textContent=`Votre tâche "${Nmodif}" a bien été modifiée, elle se nomme à présent "${newname}".`
+            txt.textContent=`Votre tâche "${Nmodif}" a bien été modifiée, elle se nomme à présent "${newname}".`;
         }
         let Hide1=document.getElementById("Nmodif");
         let Hide2=document.getElementById("Newname");
